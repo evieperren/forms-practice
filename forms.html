@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="first-select">
+    <h2>Please select an item from the drop down</h2>
+    <select name="filter" id="filter">
+      <option value="">Please select</option>
+      <option data-filter="flower" value="flower">flower</option>
+      <option data-filter="tree" value="tree">tree</option>
+      <option data-filter="fruit" value="fruit">fruit</option>
+      <option data-filter="vegetable" value="vegetable">vegetable</option>
+      <option data-filter="special" value="special">special</option>
+    </select>
+  </section>
+  
+  <select name="category" id="category">
+    <option value="">Please select</option>
+    <option data-category="fruit" value="orange">orange</option>
+    <option data-category="flower" value="rose">rose</option>
+    <option data-category="tree" value="birch">birch</option>
+    <option data-category="fruit" value="apple">apple</option>
+    <option data-category="vegetable" value="pepper">pepper</option>
+    <option data-category="tree" value="maple">maple</option>
+    <option data-category="flower" value="lilies">lilies</option>
+    <option data-category="vegetable" value="onion">onion</option>
+  </select>
+  
+  <section id="selected-content">
+    <div class="toggle-content" id="orange">Orange</div>
+    <div class="toggle-content" id="rose">rose</div>
+    <div class="toggle-content" id="birch">birch</div>
+    <div class="toggle-content" id="apple">apple</div>
+    <div class="toggle-content" id="pepper">pepper</div>
+    <div class="toggle-content" id="maple">maple</div>
+    <div class="toggle-content" id="lilies">lilies</div>
+    <div class="toggle-content" id="onion">onion</div>
+    <div class="toggle-content" id="special">special</div>
+  </section>
+  
+  <section class="form-select">
+    <select name="selected-option" id="selected-option">
+      <option value="">Please select</option>
+      <option value="orange">orange</option>
+      <option value="rose">rose</option>
+      <option value="birch">birch</option>
+      <option value="apple">apple</option>
+      <option value="pepper">pepper</option>
+      <option value="maple">maple</option>
+      <option value="lilies">lilies</option>
+      <option value="onion">onion</option>
+      <option value="special">pine</option>
+    </select>
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>

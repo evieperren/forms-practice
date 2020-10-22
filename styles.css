@@ -1,0 +1,9 @@
+#category,
+#selected-content,
+.form-select {
+  display: none;
+}
+
+#selected-content div.toggle-content {
+  display: none;
+}
