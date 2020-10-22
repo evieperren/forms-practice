@@ -7,9 +7,20 @@ function displayContentAfterInitialDropdown(){
 
     const selectedAttr = event.target[event.target.selectedIndex].getAttribute('data-filter');
 
+    const dropdownItems = document.querySelectorAll("[data-category]")
+    for(let i = 0; i < dropdownItems.length; i++){
+      dropdownItems[i].style.display = 'none'
+    }
+
+
     // show secondary link
-    const correspondingDropdownEntry = document.querySelector("[data-category="+ selectedAttr +"]")
-    correspondingDropdownEntry.parentElement.style.display = 'block'
+    const correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedAttr +"]")
+    for(let k = 0; k < correspondingDropdownEntries.length; k++){
+      console.log(correspondingDropdownEntries[k])
+      correspondingDropdownEntries[k].style.display = 'block'
+    }
+    const parent = document.querySelector('#category')
+    parent.style.display = 'block'
   })
 }
 displayContentAfterInitialDropdown()
@@ -29,7 +40,7 @@ function displayContentAfterSecondDropdown(){
       allContentBlocks[i].style.display = 'none'
     }
     correspondingDropdownEntry.style.display = 'block'
-    correspondingDropdownEntry.parentElement.style.display = 'block'
+    correspondingDropdownEntry.parentElement.style.display = 'block' // use classlist instead 
   })
 
 }
