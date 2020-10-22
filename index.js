@@ -1,47 +1,67 @@
+const secondDropdown = document.querySelector('#category')
+const allContentBlocks = document.querySelectorAll('.toggle-content')
+
+var show = function (elem) {
+  elem.classList.add('is-visible');
+  elem.classList.remove('is-hidden');
+};
+var hide = function (elem) {
+  elem.classList.add('is-hidden');
+  elem.classList.remove('is-visible');
+};
+
 function displayContentAfterInitialDropdown(){
   const select = document.querySelector('#filter')
+  hide(secondDropdown)
 
+  for( let i= 0; i < allContentBlocks.length; i++){
+    hide(allContentBlocks[i])
+  }
   select.addEventListener('change', function(event) {
     const selectedItem = event.target[event.target.selectedIndex]
-    selectedItem.selected = true // set to be selected
+    selectedItem.selected = true
 
-    const selectedAttr = event.target[event.target.selectedIndex].getAttribute('data-filter');
+    const selectedAttr = selectedItem.getAttribute('data-filter');
 
     const dropdownItems = document.querySelectorAll("[data-category]")
     for(let i = 0; i < dropdownItems.length; i++){
-      dropdownItems[i].style.display = 'none'
+      hide(dropdownItems[i])
     }
-
-
-    // show secondary link
-    const correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedAttr +"]")
-    for(let k = 0; k < correspondingDropdownEntries.length; k++){
-      console.log(correspondingDropdownEntries[k])
-      correspondingDropdownEntries[k].style.display = 'block'
-    }
-    const parent = document.querySelector('#category')
-    parent.style.display = 'block'
+    filterSecondDropdown(selectedAttr)
   })
 }
-displayContentAfterInitialDropdown()
 
+
+function filterSecondDropdown(selectedAttr){
+  const correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedAttr +"]")
+  for(let k = 0; k < correspondingDropdownEntries.length; k++){
+    show(correspondingDropdownEntries[k])
+  }
+  show(secondDropdown)
+
+}
 function displayContentAfterSecondDropdown(){
   const select = document.querySelector('#category')
   select.addEventListener('change', function(event) {
     const selectedItem = event.target[event.target.selectedIndex]
-    selectedItem.selected = true // set to be selected
+    selectedItem.selected = true 
 
     const selectedAttr = event.target[event.target.selectedIndex].value;
     
     const correspondingDropdownEntry = document.querySelector('#' + selectedAttr)
 
-    const allContentBlocks = document.querySelectorAll('.toggle-content')
+    
     for( let i= 0; i < allContentBlocks.length; i++){
-      allContentBlocks[i].style.display = 'none'
+      hide(allContentBlocks[i])
     }
-    correspondingDropdownEntry.style.display = 'block'
-    correspondingDropdownEntry.parentElement.style.display = 'block' // use classlist instead 
+    show(correspondingDropdownEntry)
+    show(correspondingDropdownEntry.parentElement)
   })
 
 }
+displayContentAfterInitialDropdown()
 displayContentAfterSecondDropdown()
+
+
+// use 'selected' attribute 
+// hide secondary dropdown and content block on second click 
