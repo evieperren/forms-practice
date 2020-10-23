@@ -4,8 +4,8 @@
 .form {
   display: none; }
 
-.is-hidden {
-  display: none; }
+.is-hidden, :disabled {
+  display: none !important; }
 
 .is-visible {
   display: block !important; }

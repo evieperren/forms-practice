@@ -20,7 +20,7 @@ var show = function (elem) {
 
 };
 
-function filterCategory(e) {
+function filterCategory() {
   resetContent();
   resetCategories();
   resetSelectedOption();
@@ -34,6 +34,7 @@ function filterCategory(e) {
   // show only filtered categories
   for(let i = 0; i < dropdownItems.length; i++){
     if(dropdownItems[i].getAttribute("data-category") !== selectedOption){
+      dropdownItems[i].disabled = true
       hide(dropdownItems[i])
     }
   }
@@ -41,9 +42,10 @@ function filterCategory(e) {
 }
 
 function filterSecondDropdown(){
-  const correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedOption +"]")
+  var correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedOption +"]")
   for(let k = 0; k < correspondingDropdownEntries.length; k++){
     show(correspondingDropdownEntries[k])
+    correspondingDropdownEntries[k].disabled = false
   }
   show(categoryDropdown)
 }
@@ -80,6 +82,7 @@ function hasClass(element, className) {
 
 function resetCategories() {
   categoryDropdown.selectedIndex = 0;
+
 }
 
 function resetContent() {
