@@ -4,59 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.scss">
 </head>
 <body>
-  <section class="first-select">
-    <h2>Please select an item from the drop down</h2>
-    <select name="filter" id="filter">
-      <option value="" selected>Please select</option>
-      <option data-filter="flower" value="flower">flower</option>
-      <option data-filter="tree" value="tree">tree</option>
-      <option data-filter="fruit" value="fruit">fruit</option>
-      <option data-filter="vegetable" value="vegetable">vegetable</option>
-      <option data-filter="special" value="special">special</option>
-    </select>
-  </section>
+  <div class="p-1">
+    <section class="select m-b-1">
+      <div class="m-b-1">
+        <select name="filter" id="filter" class="dropdown-filter" onchange=filterCategory()>
+          <option value="">Please select</option>
+          <option data-filter="flower" value="flower">flower</option>
+          <option data-filter="tree" value="tree">tree</option>
+          <option data-filter="fruit" value="fruit">fruit</option>
+          <option data-filter="vegetable" value="vegetable">vegetable</option>
+          <option value="special">special</option>
+        </select>
+      </div>
   
-  <select name="category" id="category">
-    <option value="" selected>Please select</option>
-    <option data-category="fruit" value="orange">orange</option>
-    <option data-category="flower" value="rose">rose</option>
-    <option data-category="tree" value="birch">birch</option>
-    <option data-category="fruit" value="apple">apple</option>
-    <option data-category="vegetable" value="pepper">pepper</option>
-    <option data-category="tree" value="maple">maple</option>
-    <option data-category="flower" value="lilies">lilies</option>
-    <option data-category="vegetable" value="onion">onion</option>
-  </select>
+      <select name="category" id="category" class="dropdown-category" onchange=showContent()>
+        <option value="">Please select</option>
+        <option data-category="fruit" value="orange">orange</option>
+        <option data-category="flower" value="rose">rose</option>
+        <option data-category="tree" value="birch">birch</option>
+        <option data-category="fruit" value="apple">apple</option>
+        <option data-category="vegetable" value="pepper">pepper</option>
+        <option data-category="tree" value="maple">maple</option>
+        <option data-category="flower" value="lilies">lilies</option>
+        <option data-category="vegetable" value="onion">onion</option>
+      </select>
+    </section>
   
-  <section id="selected-content">
-    <div class="toggle-content" id="orange">Orange</div>
-    <div class="toggle-content" id="rose">rose</div>
-    <div class="toggle-content" id="birch">birch</div>
-    <div class="toggle-content" id="apple">apple</div>
-    <div class="toggle-content" id="pepper">pepper</div>
-    <div class="toggle-content" id="maple">maple</div>
-    <div class="toggle-content" id="lilies">lilies</div>
-    <div class="toggle-content" id="onion">onion</div>
-    <div class="toggle-content" id="special">special</div>
-  </section>
+    <section id="selected-content" class="selected-content m-b-1">
+      <div id="orange">orange</div>
+      <div id="rose">rose</div>
+      <div id="birch">birch</div>
+      <div id="apple">apple</div>
+      <div id="pepper">pepper</div>
+      <div id="maple">maple</div>
+      <div id="lilies">lilies</div>
+      <div id="onion">onion</div>
+      <div id="special">special</div>
+      <button id="show-form-btn" class="btn btn-outlined show-form-btn">contact us</button>
+    </section>
   
-  <section class="form-select">
-    <select name="selected-option" id="selected-option">
-      <option value="" selected>Please select</option>
-      <option value="orange">orange</option>
-      <option value="rose">rose</option>
-      <option value="birch">birch</option>
-      <option value="apple">apple</option>
-      <option value="pepper">pepper</option>
-      <option value="maple">maple</option>
-      <option value="lilies">lilies</option>
-      <option value="onion">onion</option>
-      <option value="special">pine</option>
-    </select>
-  </section>
+    <section id="form" class="form">
+      <select name="selected-option" id="selected-option" class="dropdown-options">
+        <option value="">Please select</option>
+        <option data-option="orange" value="orange">orange</option>
+        <option data-option="rose" value="rose">rose</option>
+        <option data-option="birch" value="birch">birch</option>
+        <option data-option="apple" value="apple">apple</option>
+        <option data-option="pepper" value="pepper">pepper</option>
+        <option data-option="maple" value="maple">maple</option>
+        <option data-option="lilies" value="lilies">lilies</option>
+        <option data-option="onion" value="onion">onion</option>
+        <option data-option="special" value="special">special</option>
+      </select>
+    </section>
+  </div>
   <script src="index.js"></script>
 </body>
 </html>
