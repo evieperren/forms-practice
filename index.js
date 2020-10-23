@@ -17,29 +17,33 @@ var hide = function (elem) {
 var show = function (elem) {
   elem.classList.add('is-visible');
   elem.classList.remove('is-hidden');
-
 };
 
-function filterCategory() {
+filterDropdown.addEventListener('change', function(e){
   resetContent();
   resetCategories();
   resetSelectedOption();
-
+  
   // set filter
   selectedOption = filterDropdown.value;
-
+  
   // reveal categories dropdown
   show(categoryDropdown)
-
-  // show only filtered categories
-  for(let i = 0; i < dropdownItems.length; i++){
-    if(dropdownItems[i].getAttribute("data-category") !== selectedOption){
-      dropdownItems[i].disabled = true
-      hide(dropdownItems[i])
+  
+  // does it have 'data-filter'
+  if(e.target[e.target.selectedIndex].hasAttribute("data-filter")){
+    for(let i = 0; i < dropdownItems.length; i++){
+      if(dropdownItems[i].getAttribute("data-category") !== selectedOption){
+        dropdownItems[i].disabled = true
+        hide(dropdownItems[i])
+      }
     }
+    filterSecondDropdown()
+  } else {
+    console.log('has no second dropdown')
   }
-  filterSecondDropdown()
-}
+})
+
 
 function filterSecondDropdown(){
   var correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedOption +"]")
@@ -82,7 +86,6 @@ function hasClass(element, className) {
 
 function resetCategories() {
   categoryDropdown.selectedIndex = 0;
-
 }
 
 function resetContent() {
