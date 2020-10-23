@@ -27,23 +27,32 @@ filterDropdown.addEventListener('change', function(e){
   // set filter
   selectedOption = filterDropdown.value;
   
-  // reveal categories dropdown
-  show(categoryDropdown)
-  
   // does it have 'data-filter'
   if(e.target[e.target.selectedIndex].hasAttribute("data-filter")){
+    show(categoryDropdown)
     for(let i = 0; i < dropdownItems.length; i++){
       if(dropdownItems[i].getAttribute("data-category") !== selectedOption){
         dropdownItems[i].disabled = true
         hide(dropdownItems[i])
+        filterSecondDropdown()
       }
     }
-    filterSecondDropdown()
   } else {
-    console.log('has no second dropdown')
+    hide(categoryDropdown)
+    selectedContent = filterDropdown.value;
+    setSelectedOption()
+    displaySelectedContent()
   }
 })
-
+function displaySelectedContent(){
+  const div = selectedSection.children
+  for(let i= 0; i < div.length; i++){
+    if(div[i].getAttribute('id') === selectedContent){
+      show(div[i])
+      show(showFormBtn)
+    }
+  }
+}
 
 function filterSecondDropdown(){
   var correspondingDropdownEntries = document.querySelectorAll("[data-category="+ selectedOption +"]")
@@ -69,13 +78,15 @@ showFormBtn.addEventListener("click", function (event) {
 
 function setSelectedOption() {
   var opts = selectedOptionDropdown.options;
-  //selectedContent = categoryDropdown.value;
 
   for (var i = 0; i < opts.length; i++) {
     if (opts[i].getAttribute("data-option") == selectedContent) {
       var found = opts[i];
       found.selected = true;
+      show(opts[i])
       break;
+    } else {
+      hide(opts[i])
     }
   }
 }
