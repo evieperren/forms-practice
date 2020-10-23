@@ -1,0 +1,17 @@
+.selected-content > div,
+.dropdown-category,
+.show-form-btn,
+.form {
+  display: none; }
+
+.is-hidden {
+  display: none; }
+
+.is-visible {
+  display: block !important; }
+
+.p-1 {
+  padding: 1rem; }
+
+.m-b-1 {
+  margin-bottom: 1rem; }
