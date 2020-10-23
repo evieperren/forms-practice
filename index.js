@@ -29,7 +29,7 @@ function filterCategory(e) {
   selectedOption = filterDropdown.value;
 
   // reveal categories dropdown
-  categoryDropdown.classList.add("is-visible");
+  show(categoryDropdown)
 
   // show only filtered categories
   for(let i = 0; i < dropdownItems.length; i++){
@@ -51,14 +51,14 @@ function filterSecondDropdown(){
 function showContent() {
   selectedContent = categoryDropdown.value;
   resetContent();
-  document.getElementById(selectedContent).classList.add("is-visible");
-  showFormBtn.classList.add("is-visible");
+  show(document.getElementById(selectedContent))
+  show(showFormBtn)
   setSelectedOption();
 }
 
 showFormBtn.addEventListener("click", function (event) {
   setSelectedOption();
-  form.classList.add("is-visible");
+  show(form)
 });
 
 function setSelectedOption() {
@@ -87,7 +87,7 @@ function resetContent() {
   var i;
   if (y.length) {
     for (i = 0; i < y.length; i++) {
-      y[i].classList.remove("is-visible");
+      hide(y[i])
     }
   }
 
@@ -95,13 +95,13 @@ function resetContent() {
 
   for (var i = 0, j = classes.length; i < j; i++) {
     if (hasClass(showFormBtn, classes[i])) {
-      showFormBtn.classList.remove("is-visible");
+      hide(showFormBtn)
       break;
     }
   }
 }
 
 function resetSelectedOption() {
-  form.classList.remove("is-visible");
+  hide(form)
   selectedOptionDropdown.selectedIndex = 0;
 }
